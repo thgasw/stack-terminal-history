@@ -43,6 +43,7 @@ Dentro do Codespaces ou qualquer ambiente com compilador C:
    gcc src/main.c src/pilha.c -o terminal
 
 2. Execute:
+    ```bash
     ./terminal
 
 ---
