@@ -68,6 +68,10 @@ int main(void) {
                 } else {
                     printf("Executando comando: %s\n", comando);
                 }
+
+                // Executar o comando como se fosse no terminal
+                system(comando);
+
                 break;
 
             case 2:
