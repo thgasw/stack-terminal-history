@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include "../include/pilha.h"
+#include "../include/grafo.h"
+
 
 // Função auxiliar para remover o '\n' que o fgets coloca no final
 void removerQuebraDeLinha(char *str) {
