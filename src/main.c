@@ -101,14 +101,26 @@ int main(void) {
 
             case 3:
                 if (!peekComando(&historico, bufferComando)) {
-                    printf("\nNao ha comandos para reexecutar.\n");
+                printf("\nNao ha comandos para reexecutar.\n");
                 } else {
-                    // Opcional: empilhar de novo para registrar a reexecucao
-                    if (!pushComando(&historico, bufferComando)) {
-                        printf("\nHistorico cheio! Nao foi possivel registrar a reexecucao.\n");
-                    } else {
-                        printf("\nReexecutando comando: %s\n", bufferComando);
-                    }
+                // REGISTRAR TRANSIÇÃO NO GRAFO
+                if (temUltimoComando) {
+                registrarTransicao(&grafo, ultimoComando, bufferComando);
+                }
+
+                // ATUALIZAR ÚLTIMO COMANDO
+                strncpy(ultimoComando, bufferComando, MAX_TAM_COMANDO - 1);
+                ultimoComando[MAX_TAM_COMANDO - 1] = '\0';
+                temUltimoComando = 1;
+
+                // Empilhar novamente
+                if (!pushComando(&historico, bufferComando)) {
+                printf("\nHistorico cheio! Nao foi possivel registrar a reexecucao.\n");
+                } else {
+                printf("\nReexecutando comando: %s\n", bufferComando);
+                }
+
+                system(bufferComando);
                 }
                 break;
 
