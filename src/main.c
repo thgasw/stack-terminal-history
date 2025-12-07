@@ -60,27 +60,35 @@ int main(void) {
 
         switch (opcao) {
             case 1:
-                printf("\nDigite o comando que deseja executar: ");
-                if (fgets(comando, sizeof(comando), stdin) == NULL) {
-                    printf("Erro na leitura do comando.\n");
-                    break;
-                }
-                removerQuebraDeLinha(comando);
+                 printf("\nDigite o comando que deseja executar: ");
+                 if (fgets(comando, sizeof(comando), stdin) == NULL) {
+                 printf("Erro na leitura do comando.\n");
+                 break;
+                 }
+                 removerQuebraDeLinha(comando);
 
                 if (strlen(comando) == 0) {
-                    printf("Comando vazio. Nada foi executado.\n");
-                    break;
+                printf("Comando vazio. Nada foi executado.\n");
+                break;
                 }
+
+                // REGISTRAR TRANSIÇÃO NO GRAFO (se houver comando anterior)
+                if (temUltimoComando) {
+                registrarTransicao(&grafo, ultimoComando, comando);
+                 }
+
+                // ATUALIZAR ÚLTIMO COMANDO EXECUTADO
+                strncpy(ultimoComando, comando, MAX_TAM_COMANDO - 1);
+                ultimoComando[MAX_TAM_COMANDO - 1] = '\0';
+                temUltimoComando = 1;
 
                 if (!pushComando(&historico, comando)) {
-                    printf("Historico cheio! Nao foi possivel armazenar o comando.\n");
+                 printf("Historico cheio! Nao foi possivel armazenar o comando.\n");
                 } else {
-                    printf("Executando comando: %s\n", comando);
+                printf("Executando comando: %s\n", comando);
                 }
 
-                // Executar o comando como se fosse no terminal
                 system(comando);
-
                 break;
 
             case 2:
