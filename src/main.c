@@ -140,6 +140,28 @@ int main(void) {
                 }
                 break;
 
+             case 6: {
+                char comandoBase[MAX_TAM_COMANDO];
+                printf("\nDigite o comando base para ver as sugestoes posteriores: ");
+                if (fgets(comandoBase, sizeof(comandoBase), stdin) == NULL) {
+                    printf("Erro na leitura do comando.\n");
+                    break;
+                }
+                removerQuebraDeLinha(comandoBase);
+
+                if (strlen(comandoBase) == 0) {
+                    printf("Comando vazio.\n");
+                    break;
+                }
+
+                sugerirComandosPosteriores(&grafo, comandoBase);
+                break;
+            }
+
+            case 7:
+                mostrarTodasTransicoes(&grafo);
+                break;
+
             case 0:
                 printf("\nSaindo do programa. Ate mais!\n");
                 break;
