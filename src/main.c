@@ -22,16 +22,20 @@ void limparBufferEntrada(void) {
 }
 
 void exibirMenu(void) {
-    printf("\n================ HISTORICO DE COMANDOS (PILHA) ================\n");
+    void exibirMenu(void) {
+    printf("\n================ HISTORICO DE COMANDOS (PILHA + GRAFO) ================\n");
     printf("1 - Executar novo comando\n");
     printf("2 - Ver ultimo comando executado\n");
     printf("3 - Reexecutar ultimo comando\n");
     printf("4 - Listar historico completo\n");
     printf("5 - Remover ultimo comando do historico\n");
+    printf("6 - Mostrar comandos mais provaveis apos um comando\n");
+    printf("7 - Mostrar todas as transicoes registradas (grafo)\n");
     printf("0 - Sair\n");
-    printf("===============================================================\n");
+    printf("=======================================================================\n");
     printf("Escolha uma opcao: ");
 }
+
 
 int main(void) {
     PilhaComandos historico;
