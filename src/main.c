@@ -37,6 +37,13 @@ int main(void) {
     PilhaComandos historico;
     inicializarPilha(&historico);
 
+
+    GrafoComandos grafo;           
+    inicializarGrafo(&grafo);      
+
+    char ultimoComando[MAX_TAM_COMANDO] = "";   
+    int temUltimoComando = 0;                   
+
     int opcao;
     char comando[MAX_TAM_COMANDO];
     char bufferComando[MAX_TAM_COMANDO];
